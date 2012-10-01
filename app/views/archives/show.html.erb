@@ -1,0 +1,22 @@
+<%= render 'shared/aside' %>
+<section class="span9">
+<% if params[:month] %>
+	<% provide(:title, Russian::strftime(@articles.first.created_at, "%B")) %>
+	<h1>Архив за <%= Russian::strftime(@articles.first.created_at, "%B") %> <%= params[:year] %> года</h1>
+	<hr>
+	<%= render @articles %>
+	<%= will_paginate @articles %>
+<% else %>
+	<% provide(:title, params[:year]) %>
+	<h1>Архив за <%= params[:year] %> год</h1>
+	<hr>
+	<dl class="dl-horizontal">
+		<% @articles_archive_list.each do |month,posts| %>
+			<dt><%= link_to month, archive_path(params[:year],posts.first.created_at.month) %></dt>
+			<% posts.each do |article| %>
+				<dd><%= link_to article.title, article %></dd>
+			<% end %>
+		<% end %>
+	</dl>
+<% end %>
+</section>

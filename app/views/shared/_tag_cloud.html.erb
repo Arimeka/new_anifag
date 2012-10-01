@@ -1,0 +1,5 @@
+<div id="tag_cloud">
+	<% @tags.order('name').each do |x| %>	  
+		<%= link_to x.name, tag_path(x.name), style: "font-size:#{@tag_cloud_hash[x.id]}px;", class: "cloud_element" %>
+	<% end %>
+</div>

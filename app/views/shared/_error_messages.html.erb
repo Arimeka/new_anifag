@@ -1,0 +1,17 @@
+<% if @user.errors.any? || (@user.user_description && @user.user_description.errors.any?) %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Форма содержит <%= (@user.errors.count + @user.user_description.errors.count).to_s + 
+      										" " + Russian::pluralize((@user.errors.count + @user.user_description.errors.count), 
+      										"ошибку", "ошибки", "ошибок") %>.
+    </div>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    <% @user.user_description.errors.full_messages.each do |msg| %>
+			<li>* <%= msg %></li>
+	  <% end %>
+    </ul>
+  </div>
+<% end %>

@@ -1,0 +1,9 @@
+<% cache do %>
+<footer class="footer">
+	<%= debug(params) if Rails.env.development? %>
+	<small>
+    <%= link_to "Anime Fag", root_path %> 
+    <%= Time.now.year %>
+  </small>
+</footer>
+<% end %>

@@ -1,0 +1,18 @@
+# See http://www.robotstxt.org/wc/norobots.html for documentation on how to use the robots.txt file
+#
+# To ban all spiders from the entire site uncomment the next two lines:
+User-Agent: *
+Disallow: /
+Disallow: /signin
+Disallow: /signout
+Disallow: /redactor_rails
+Disallow: /users
+Disallow: /sessions
+Disallow: /categories
+Disallow: /tags
+Disallow: /forums
+Disallow: /topics
+Disallow: /topic_posts
+Disallow: /articles/new
+
+Sitemap: http://www.anifag.com/sitemap_index.xml.gz

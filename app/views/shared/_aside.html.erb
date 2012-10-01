@@ -1,0 +1,47 @@
+<% tag_cloud(10) %>
+<aside class="span3">
+  <p>
+    <a href="https://plus.google.com/107660702014207926001/?prsrc=3" style="text-decoration: none;">
+      <img src="https://ssl.gstatic.com/images/icons/gplus-64.png" width="50" height="50" style="border: 0;" />
+      </a>
+    <a href="http://ru-ru.facebook.com/people/Navi-Arimeka/100002067279966" target="_TOP" title="Navi Arimeka">
+      <img alt="Facebook" src="http://1.bp.blogspot.com/-EVqhKy2cnfk/TVt7DpTsX4I/AAAAAAAAAMY/QMs7ucJWMqM/s1600/facebookicon.png" width="50" height="50" style="border: 0px;" />
+      </a>
+    <a href="http://vk.com/anifag" target="_TOP">
+      <img alt="ВКонтакте" src="https://lh5.googleusercontent.com/-Z10Dc4e7nB8/TsdXlY8AYLI/AAAAAAAAHYk/HT1mhP-JLrw/vkontakte.png" width="50" height="50" style="border: 0px;" />
+      </a>
+    <a href="https://twitter.com/wrk_navi" target="_TOP">
+      <img alt="Twitter" src="https://lh3.googleusercontent.com/-04YLrpSai7U/TsdYRT2K3kI/AAAAAAAAHYs/fsh77MgYTAg/twitter.png" width="50" height="50" style="border: 0px;" />
+    </a>
+  </p>
+  <hr>
+  <% if @tags.any? %>
+    <h4>Облако тегов</h4>
+    <p><%= render 'shared/tag_cloud'%></p>
+    <p><%= link_to "Все теги", tags_path %></p>
+    <hr>
+  <% end %>
+  <%= adv_aside.html_safe %>
+  <hr>
+	<h4>Архив</h4>
+	<dl>
+		<% 0.upto(3) do |i| %>
+			<% archive_list(Time.now.year - i) %>
+			<% if @archive_year_count != 0 %>
+				<dt>
+					<%= link_to (Time.now.year - i), archive_path(Time.now.year - i) %> (<%= @archive_year_count %>)
+				</dt>		
+				<% x = 1 %>
+				<% @archive_month_count.each do |count| %>
+					<% if count != 0 %>
+						<dd>
+							<%= link_to Russian::strftime(Time.new((Time.now.year - i),x), "%B"), archive_path((Time.now.year - i),Time.new((Time.now.year - i),x).month) %> (<%= count %>)					
+						</dd>
+					<% end %>
+					<% x += 1 %>
+				<% end %>
+			<% end %>
+		<% end %>		
+	</dl>
+	<hr>
+</aside>

@@ -1,0 +1,51 @@
+<section>
+  <% if controller.action_name == 'new' %> 
+    <h1>Новый форум</h1>
+  <% else %>
+    <h1>Редактирование форума</h1>
+  <% end %>
+  
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for(@forum) do |f| %>
+        <% if @forum.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-error">
+              Форма содержит <%= (@forum.errors.count).to_s + 
+                                  " " + Russian::pluralize((@forum.errors.count), 
+                                  "ошибку", "ошибки", "ошибок") %>.
+            </div>
+            <ul>
+            <% @forum.errors.full_messages.each do |msg| %>
+              <li>* <%= msg %></li>
+            <% end %>>
+            </ul>
+          </div>
+        <% end %>
+  
+        <%= f.label :title, "Название" %>
+        <%= f.text_field :title %>
+  
+        <%= f.label :content, "Описание" %>
+        <%= f.text_area :content %>
+        
+        <%= f.label :protect, class: "checkbox" do %>
+          <%= f.check_box :protect  %> Запретить создание топиков
+        <% end %>
+  
+        <% if controller.action_name == 'new' %>
+            <%= f.submit "Создать", class: "btn btn-large btn-primary" %>
+          <% else %>
+            <% if @forum && @forum.id  %>
+              <%= link_to "Удалить", @forum, method: :delete,
+                                           data: { confirm: "Уверены?" },
+                                           title: "Удалить",
+                                           class: "btn btn-large btn-danger pull-right" %>
+            <% end %>
+            <%= f.submit "Обновить", class: "btn btn-large btn-primary" %>
+            <%= f.submit "Отмена", name: 'cancel_button', class: "btn btn-large" %>
+          <% end %>
+      <% end %>
+    </div>
+  </div> 
+</section> 

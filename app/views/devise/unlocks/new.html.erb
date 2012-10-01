@@ -1,0 +1,20 @@
+<% provide(:title, 'Разблокировка') %>
+<h1>Переслать инструкцию по разблокировке</h1>
+
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    
+    <div class="form-actions">
+      <%= f.submit "Переслать инструкцию по разблокировке", class: "btn btn-large btn-primary" %><br />
+      <%= render "devise/shared/links" %>
+    </div>
+    <% end %>
+  </div>
+</div>  
+    

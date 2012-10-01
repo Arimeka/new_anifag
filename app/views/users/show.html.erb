@@ -1,0 +1,65 @@
+<% provide(:title, @user.name) %>
+<h1 class="user_title"><%= @user.name %></h1>
+<blockquote class="pull-right"><%= @user.user_description.sign %></blockquote>
+<section class="user_info">
+	<table>
+		<tbody>
+			<tr>
+				<td class="user_info">
+					<div class="thumbnail user_pic">
+						<%= gravatar_for @user %>						
+						<% if user_role(@user) %>
+							<p><strong><%= user_role(@user) %></strong></p>
+						<% end %>						
+					</div>
+					<% if user_signed_in? && (current_user?(@user) || (current_user.admin? && !@user.admin?)) %>
+						<div class ="user_pic">
+							<%= link_to "Настройки", edit_user_registration_path(@user), class: "btn btn-primary" %>
+							<% if current_user.admin? && !current_user?(@user) && !@user.admin? %>
+								<% if @user.banned == false %>
+									<%= link_to "Забанить", user_ban_path, class: "btn btn-danger",
+		                                  									 data: { confirm: "Уверены?" } %>
+		          	<% else %>
+		          		<%= link_to "Разбанить", user_ban_path, class: "btn btn-danger",
+		                                  									 data: { confirm: "Уверены?" } %>
+		            <% end %>                      									                        									 
+		    				<%= link_to "Удалить", @user, class: "btn btn-danger", method: :delete,
+		                                  				data: { confirm: "Уверены?" } %>
+		  				<% end %>
+		  			</div>
+	  			<% end %>
+				</td>
+				<td class="user_info">
+					<p><strong>Зарегистрирован</strong>: <%= @user.created_at.strftime("%d-%m-%Y") %></p>
+					<% if user_signed_in? && (current_user?(@user) || current_user.admin?) %>
+						<p><strong>Email</strong>: <%= @user.email %><abbr title="Видно только вам" class="initialism">
+																			 	 <i class="icon-info-sign"></i>
+																			</abbr>
+						</p>  
+					<% end %>
+					<% if @user.user_description.links %>
+						<dl>
+							<dt><strong>Ссылки</strong>:</dt> 
+								<% create_links(@user.user_description.links) %>
+								<% @mass.each do |x| %>
+									<dd><%= link_to x[:name], x[:link], target: "_blank", rel: "nofollow" %></dd>
+								<% end %>
+						</dl>
+					<% end %>					
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</section>
+<hr>
+<section>
+	<h2>Последние записи</h2>
+	<div class="span12">
+    <% if @user.articles.any? %>
+      <section class="articles">
+        <%= render @articles %>
+      </section>
+      <%= will_paginate @articles %>
+    <% end %>
+  </div>
+</section>

@@ -1,0 +1,79 @@
+<% provide(:title, @user.name + " - Редактирование") %>
+<h1 class="user_title"><%= @user.name %> - Редактирование</h1>
+<section class="user_info">
+	<div class="span4">
+		<div class="thumbnail user_pic edit">
+			<%= gravatar_for @user %>
+			<%= link_to "Сменить", "http://ru.gravatar.com/emails", :target => "_blank", 
+																												 :class => "btn btn-primary" %>
+		</div>
+	</div>
+	<div class="span6">
+		<div class="alert alert-info justify">			
+			<button type="button" class="close" data-dismiss="alert">×</button>			
+			<p>Учтите, что ваша аватарка связана с вашим email'ом. Не забудьте указать новый email на gravatar.com.</p>
+			<p>Если вы не хотите менять какие-либо данные, то <strong>не изменяйте</strong> их значения.</p>
+		</div>
+		<%= form_for(@user) do |f| %>
+			<%= render 'shared/error_messages' %>
+		
+			<h2>Основные данные</h2>
+
+      <%= f.label :name, "Имя" %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+      
+      <hr>
+      
+      <h2>Дополнительные данные</h2>
+      
+      <%= label_tag 'sign', "Подпись" %>      
+      <%= text_area_tag 'sign', @user.user_description.sign, :rows => 6 %>
+      
+      
+      <div class="alert alert-info justify">			
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<p>Формат ввода ссылок:</p>
+				<ul class="unstyled">
+					<li>Название ссылки - http://www.example.com/</li>
+					<li>Название ссылки - https://example.com/</li>
+					<li>...</li>
+				</ul>				
+				<p>Слэш в конце ссылки обязателен. Каждая ссылка должна быть на новой строке. Неправильно введеные ссылки будут игнорироваться.</p>
+			</div>
+			<%= label_tag 'links', "Ссылки" %>     
+      <%= text_area_tag 'links', @user.user_description.links, :rows => 6 %>
+      
+      <% if current_user.admin? && !current_user?(@user) && !@user.admin? %>
+      	<div class="alert alert-info justify">			
+					<button type="button" class="close" data-dismiss="alert">×</button>			
+					<p>Существующие роли: newsmaker, editor.</p>
+				</div>
+	      <%= label_tag 'role', "Роль" %>
+	      <%= text_field_tag 'role', @user.user_description.role %>
+	    <% end %>
+      
+      <hr>
+      
+      <h2>Смена пароля</h2>
+
+      <%= label_tag 'new_password', "Новый пароль" %>
+      <%= password_field_tag 'new_password' %>
+
+      <%= label_tag 'new_password_confirmation', "Подтверждение" %>
+      <%= password_field_tag 'new_password_confirmation' %>
+      
+      <hr>
+      
+      <%= f.label :password, "Текущий пароль" %>
+      <%= f.password_field :password %>
+      
+      <% if current_user.admin? %>
+      	<%= link_to 'Сбросить пароль', password_reset_path, class: "pull-right btn btn-large btn-warning", data: { confirm: "Уверены?" } %>
+      <% end %>
+      <%= f.submit "Сохранить изменения", class: "btn btn-large btn-primary" %>      
+    <% end %>
+	</div>
+</section>

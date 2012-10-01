@@ -1,0 +1,6 @@
+<meta name="description" content="<%=
+ @article && @article.meta_description && !@article.meta_description.empty? ? @article.meta_description : "Новости аниме и манги."
+%>">
+<meta name="keywords" content="новости, аниме, манга, anime fag<%=
+  ", " + @article.keywords if @article && @article.keywords && !@article.keywords.empty?
+%>"> 

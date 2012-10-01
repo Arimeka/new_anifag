@@ -1,0 +1,59 @@
+<% provide(:title, @forum.title) %>
+
+<h1><%= @forum.title %></h1>
+<% if @forum.content %>
+  <p><%= @forum.content %></p>
+<% end %>
+<hr>
+<ul class="breadcrumb">
+  <li><%= link_to "Форумы", forums_path %> <span class="divider">/</span></li>
+  <li class="active"><%= link_to @forum.title, @forum %></li>
+</ul>
+<%= will_paginate @topics %>
+<table class="table table-striped table-bordered">
+  <thead>  
+    <tr>  
+      <th width="60%" colspan="2">Топик</th>  
+      <th width="10%">Ответов</th>  
+      <th width="30%">Последнее сообщение</th>        
+    </tr>
+  </thead>
+  <tbody>  
+    <% @topics.each do |topic| %>  
+      <tr>
+        <td width="5%" class="forum-center">
+          <% if topic.close %>
+            <%= link_to image_tag('topic_close.png', title: topic.title), topic %>
+          <% else %>
+            <%= link_to image_tag('topic_open.png', title: topic.title), topic %>
+          <% end %>
+        </td>  
+        <td><%= link_to topic.title, topic %></td>  
+        <td class="forum-center"><%= topic.topic_posts.count %></td>  
+        <td class="forum-center">
+          <% if topic.topic_posts.any? %>
+            <%= topic.topic_posts.last.created_at %> by 
+            <%= link_to topic.topic_posts.last.user.name, topic.topic_posts.last.user %>
+          <% else %>
+            Нет сообщений
+          <% end %>
+        </td>
+        <% if ((current_user?(topic.user) && !current_user.banned) || current_user.admin?) %>  
+          <td><%= link_to "Edit", edit_topic_path(topic) %></td>  
+          <td><%= link_to "Delete", topic, :confirm => 'Уверены?', :method => :delete %></td>
+        <% end %>  
+      </tr>  
+    <% end %>
+  </tbody>  
+</table>
+<%= will_paginate @topics %>
+<ul class="breadcrumb">
+  <li><%= link_to "Форумы", forums_path %> <span class="divider">/</span></li>
+  <li class="active"><%= link_to @forum.title, @forum %></li>
+</ul>
+<hr>
+<%= link_to "Создать топик", new_topic_path(forum: @forum.id), class: "btn btn-primary" if !(@forum.protect && !current_user.admin?) %>
+<% if current_user.admin? %>
+  <%= link_to "Удалить форум", @forum, :confirm => 'Уверены?', :method => :delete, class: "btn btn-primary btn-danger pull-right" %>
+  <%= link_to "Редактировать форум", edit_forum_path(@forum), class: "btn btn-primary" %>
+<% end %>

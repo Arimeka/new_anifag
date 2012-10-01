@@ -1,0 +1,58 @@
+<% provide(:title, "Форумы") %>
+
+<h1>Форумы</h1>
+<% if current_user.admin? %>
+  <%= link_to "Все топики", topics_path, class: "pull-right" %>
+<% end %>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th width="70%" colspan="2">Форум</th>  
+      <th width="30%">Последнее сообщение</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @forums.each do |forum| %>
+    <tr>
+      <td width="5%" class="forum-center">
+        <% if forum.protect %>
+          <%= link_to image_tag('forum_close.png', title: forum.title), forum %>
+        <% else %>
+          <%= link_to image_tag('forum_open.png', title: forum.title), forum %>
+        <% end %>
+      </td>
+      <td>        
+        <h4><%= link_to forum.title, forum %></h4>
+        <p><small><%= forum.topics.count.to_s + ' ' + Russian::pluralize((forum.topics.count), 
+                                  "топик", "топика", "топиков") %></small></p>
+        <% if forum.content %>
+          <p><%= forum.content[0..40] + ( forum.content.length > 40 ? '...' : '' )  %></p>
+        <% end %>
+      </td>
+      <td class="forum-center">
+        <% if forum.topics.any? %>
+          <% if forum.topics.first.topic_posts.any? %>
+            <%= forum.topics.first.topic_posts.last.created_at %> by 
+            <%= link_to forum.topics.first.topic_posts.last.user.name, forum.topics.first.topic_posts.last.user %> 
+            <br/>в <%= link_to forum.topics.first.title, forum.topics.first %>
+          <% else %>
+            <%= forum.topics.first.created_at %> by 
+            <%= link_to forum.topics.first.user.name, forum.topics.first.user %> 
+            <br/>в <%= link_to forum.topics.first.title, forum.topics.first %>
+          <% end %>
+        <% else %>
+          Нет сообщений          
+        <% end %>
+      </td>
+      <% if current_user.admin? %>
+        <td><%= link_to "Edit", edit_forum_path(forum) %></td>  
+        <td><%= link_to "Delete", forum, :confirm => 'Уверены?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>      
+</table>
+<% if current_user.admin? %>
+  <hr>
+  <%= link_to "Создать новый форум", new_forum_path, class: "btn btn-primary" %>
+<% end %>

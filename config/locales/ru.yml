@@ -1,0 +1,26 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        name: "Имя"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"
+        password_digest: "Пароль"
+      user_description:
+        role: "Роль"
+        links: "Ссылки"  
+        sign: "Подпись"
+      article:
+        title: "Заголовок"
+        content: "Тело статьи"
+      forum:
+        title: "Заголовок"
+      topic:
+        title: "Заголовок"
+        content: "Тело топика"
+      topic_post:
+        content: "Сообщение"
+  will_paginate:
+    previous_label: "&#8592; Пред."
+    next_label: "След. &#8594;"
+    page_gap: "&hellip;"      

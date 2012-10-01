@@ -1,0 +1,40 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user_title {
+  text-align: right;
+  border-bottom: 1px solid #cecece; 
+}
+
+.user_info {
+  padding: 10px;
+  vertical-align: top;
+  img {
+    padding-bottom: 5px;
+  } 
+}
+
+.user_pic {
+  text-align: center;
+  padding-top: 5px;
+}
+
+.edit {
+  float: left;    
+}
+
+/* users index */
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-top: 1px solid #999;
+    &:last-child {
+      border-bottom: 1px solid #999;
+    }
+  }
+}

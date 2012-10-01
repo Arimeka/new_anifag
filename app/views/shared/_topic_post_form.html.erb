@@ -1,0 +1,75 @@
+<section>
+  <h2>Ответить</h2>
+  <hr>
+  <% if params[:preview_button] %>
+    <h2>Предпросмотр</h2>
+    <table class="table table-bordered">
+      <thead>  
+        <tr>  
+          <th width="20%">Автор</th>  
+          <th width="80%">Сообщение</th>        
+        </tr>
+      </thead>
+      <tbody> 
+        <tr>
+          <td class="post-author">
+            <p><strong><%= link_to @topic_post.user.name, user_url(@topic_post.user) %></strong></p>
+            <%= gravatar_for @topic_post.user, options = { size: 120 } %>
+            <% if user_role(@topic_post.user) %>
+              <p><strong><%= user_role(@topic_post.user) %></strong></p>
+            <% end %>
+          </td>  
+          <td>                    
+            <%= show_content(@topic_post.content).html_safe %>
+            <% if @topic_post.user.user_description.sign %>
+              <p class="post-footer">
+                <small><%= @topic_post.user.user_description.sign %></small>
+              </p>
+            <% end %>
+          </td> 
+        </tr>
+      </tbody>  
+    </table>
+    <hr>
+  <% end %>
+  <div class="row">
+    <div class="span12">
+      <%= form_for(@topic_post) do |f| %>
+        <% if @topic_post.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-error">
+              Форма содержит <%= (@topic_post.errors.count).to_s + 
+                                  " " + Russian::pluralize((@topic_post.errors.count), 
+                                  "ошибку", "ошибки", "ошибок") %>.
+            </div>
+            <ul>
+            <% @topic_post.errors.full_messages.each do |msg| %>
+              <li>* <%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+  
+        <%= f.text_area :content, class: "redactor_topic" %>
+        
+        <%= hidden_field_tag "topic", params[:id] ? params[:id] : @topic.id %>
+        
+        <div class="form-actions control">
+          <% if controller.action_name != 'edit' %>
+            <%= f.submit "Ответить", class: "btn btn-large btn-primary" %>
+          <% else %>
+            <% if @topic_post && @topic_post.id  %>
+              <%= link_to "Удалить", @topic_post, method: :delete,
+                                           data: { confirm: "Уверены?" },
+                                           title: "Удалить",
+                                           class: "btn btn-large btn-danger pull-right" %>
+            <% end %>
+            <%= f.submit "Обновить", class: "btn btn-large btn-primary" %>
+            <%= f.submit "Отмена", name: 'cancel_button', class: "btn btn-large" %>
+          <% end %>
+          <%= f.submit 'Предпросмотр', name: 'preview_button', class: "btn btn-large" %>
+        </div>
+      <% end %>
+    </div>
+  </div> 
+</section> 

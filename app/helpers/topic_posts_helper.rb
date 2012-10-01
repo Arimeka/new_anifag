@@ -1,0 +1,2 @@
+module TopicPostsHelper
+end

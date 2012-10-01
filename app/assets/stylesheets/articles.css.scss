@@ -1,0 +1,53 @@
+// Custom
+
+div.control {
+  background-color: white;
+}
+
+hr#more {
+  border-width: 1px 0 0 0;
+  border-style: dashed;
+  border-color: #666;
+  height: 8px;
+  background: #DDD;
+}
+
+body .redactor_toolbar li a.redactor_btn_button1 {
+  background: url(more.png) no-repeat;
+  background-position-y: 50%;
+}
+
+div#preview {
+  color: #333;
+  background-color: transparent;
+}
+
+#content {
+  height: 600px;
+}
+
+article.article {  
+  .title {
+    color: #3D84C6;
+    text-decoration: none;
+    font-size: 24px;
+    padding-bottom: 10px;
+  }
+  .source{
+    
+    a {
+      color: #555;
+      &:hover {
+        color: #222;
+      }        
+    }
+  }
+  
+  .body {
+    overflow-x: auto;
+  }
+  
+  .post-footer {
+    padding-top: 20px;
+  }
+}

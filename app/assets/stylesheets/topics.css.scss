@@ -1,0 +1,16 @@
+// Place all the styles related to the Topics controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.table td.post-author {
+  text-align: center;
+}
+
+.table td p.post-head {
+  border-bottom: 1px solid #EAEAEA;
+}
+
+.table td p.post-footer {
+  border-top: 1px solid #EAEAEA;
+  margin-top: 25px;
+}

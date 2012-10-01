@@ -1,0 +1,103 @@
+<% provide(:title, @topic.title) %>
+<h1><%= @topic.title %></h1>
+<hr>
+<ul class="breadcrumb">
+  <li><%= link_to "Форумы", forums_path %> <span class="divider">/</span></li>
+  <li><%= link_to @topic.forum.title, forum_path(@topic.forum) %> <span class="divider">/</span></li>
+  <li class="active"><%= link_to @topic.title, @topic %></li>
+</ul>
+<% if controller.action_name == 'show' %>
+  <%= will_paginate @topic_posts %>
+<% end %>
+<table class="table table-striped table-bordered">
+  <thead>  
+    <tr>  
+      <th width="20%">Автор</th>  
+      <th width="80%">Сообщение</th>        
+    </tr>
+  </thead>
+  <tbody> 
+    <tr>
+      <td class="post-author">
+        <p><strong><%= link_to @topic.user.name, user_url(@topic.user) %></strong></p>
+        <%= gravatar_for @topic.user, options = { size: 120 } %>
+        <% if user_role(@topic.user) %>
+          <p><strong><%= user_role(@topic.user) %></strong></p>
+        <% end %>
+      </td>  
+      <td>
+        <p class="post-head">
+          <% if ((current_user?(@topic.user) && !current_user.banned) || current_user.admin?) %>
+            <small class="pull-right">
+              <%= link_to "Edit", edit_topic_path(@topic) %> |  
+              <%= link_to "Delete", @topic, :confirm => 'Уверены?', :method => :delete %>
+            </small>
+          <% end %>
+          <small>
+            <%= @topic.created_at %>
+            <% if @topic.created_at != @topic.updated_at %>
+              (ред. <%= @topic.updated_at %>)
+            <% end %>
+          </small>
+        </p>        
+        <%= show_content(@topic.content).html_safe %>
+        <% if @topic.user.user_description.sign %>
+          <p class="post-footer">
+            <small><%= @topic.user.user_description.sign %></small>
+          </p>
+        <% end %>
+      </td> 
+    </tr>
+    <% if @topic.topic_posts.any? %>
+      <% @topic_posts.each do |post| %>
+        <tr>
+          <td class="post-author">
+            <p><strong><%= link_to post.user.name, user_url(post.user) %></strong></p>
+            <%= gravatar_for post.user, options = { size: 120 } %>
+            <% if user_role(post.user) %>
+              <p><strong><%= user_role(post.user) %></strong></p>
+            <% end %>
+          </td>  
+          <td>
+            <p class="post-head">
+              <% if ((current_user?(post.user) && !current_user.banned) || current_user.admin?) %>
+                <small class="pull-right">
+                  <%= link_to "Edit", edit_topic_post_path(post) %> |  
+                  <%= link_to "Delete", post, :confirm => 'Уверены?', :method => :delete %>
+                </small>
+              <% end %>
+              <small>
+                <%= post.created_at %>
+                <% if post.created_at != post.updated_at %>
+                  (ред. <%= post.updated_at %>)
+                <% end %>
+              </small>
+            </p>        
+            <%= show_content(post.content).html_safe %>
+            <% if post.user.user_description.sign %>
+              <p class="post-footer">
+                <small><%= post.user.user_description.sign %></small>
+              </p>
+            <% end %>
+          </td> 
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>  
+</table>
+
+<% if controller.action_name == 'show' %>
+  <%= will_paginate @topic_posts %>
+<% end %>
+
+<ul class="breadcrumb">
+  <li><%= link_to "Форумы", forums_path %> <span class="divider">/</span></li>
+  <li><%= link_to @topic.forum.title, forum_path(@topic.forum) %> <span class="divider">/</span></li>
+  <li class="active"><%= link_to @topic.title, @topic %></li>
+</ul>
+
+<% if @topic.close %>
+  <h2>Комментирование запрещено</h2>
+<% else %>
+  <%= render 'shared/topic_post_form' %>
+<% end %>

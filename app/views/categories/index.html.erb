@@ -1,0 +1,38 @@
+<% provide(:title, 'Категории') %>
+<%= render 'shared/aside' %>
+<section class="span9">
+	<h1>Все категории</h1>
+	
+	<%= link_to "Создать новую", new_category_path, class: "btn btn-primary" %>
+
+	<%= will_paginate %>
+	
+	<table class="table table-striped">
+		<thead>
+	    <tr>
+	      <th>Количество постов</th>
+	      <th>URL</th>
+	      <th>Название</th>
+	      <th></th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	  	<% @categories.each do |category| %>
+  			<% if !category.name.blank? %>
+			    <tr>
+			      <td><%= category.cat_associations.count %></td>
+			      <td><%= link_to category.name, category %></td>
+			      <td><%= category.title %></td>
+			      <td>
+			        <%= link_to "Редактировать", edit_category_path(category) %> | 
+			        <%= link_to "Удалить", category, method: :delete,
+                                               data: { confirm: "Уверены?" } %>   
+			      </td>
+		    	</tr>
+		    <% end %>
+	    <% end %>
+	  </tbody>
+	</table>
+	
+	<%= will_paginate %>
+</section>

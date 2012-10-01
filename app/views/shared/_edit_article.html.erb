@@ -1,0 +1,89 @@
+<div class="span12">	
+	<% if params[:preview_button] %>
+  	<div id="preview" class="alert alert-info">  		
+  		<button type="button" class="close" data-dismiss="alert">×</button>
+  		<h2>Предпросмотр</h2>
+  		<article class="article">
+	  		<h3 class="title"><%= @article.title %></h3>
+	  		<hr>
+	  		<div class="body"><%= show_content(@article.content).html_safe %></div>
+	  		<% if !@article.source.blank? %>
+	  			<hr>
+	  			<small class="source"><%= link_to "Источник", @article.source, target:"_blank" %></small>
+	  		<% end %>
+  		</article>
+  	</div>
+	<% end %>
+	<% if controller.action_name == "new" || controller.action_name == "create" %>
+		<% uri = '/articles' %>
+		<% method = 'post' %>
+	<% else %>
+		<% uri = @article %>
+		<% method = 'put' %>
+	<% end %>
+	<%= form_tag(uri, method: method) do -%>
+<% if @article %>
+<% if @article.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-error">
+      Форма содержит <%= @article.errors.count.to_s + " " + Russian::pluralize(@article.errors.count, "ошибку", "ошибки", "ошибок") %>.
+    </div>
+    <ul>
+    <% @article.errors.full_messages.each do |msg| %>
+      <li>* <%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>	
+<% end %>	
+		<%= label_tag 'title', 'Заголовок' %>
+		<%= text_field_tag 'title', params[:title] %>
+		<%= text_area_tag 'content', params[:content], class: "redactor_article" %>
+		<%= label_tag 'source', 'Источник'  %>
+		<%= url_field_tag 'source', params[:source], placeholder: 'http://www.example.com/' %>
+		<div class="form-actions control">
+			<% if controller.action_name == "new" || controller.action_name == "create" || @article.draft %>	
+				<%= submit_tag "Опубликовать", class: "btn btn-large btn-primary" %>
+				<%= submit_tag 'Сохранить', name: 'draft_button', class: "btn btn-large" %>
+			<% else %>
+				<%= submit_tag "Обновить", class: "btn btn-large btn-primary" %>
+				<%= submit_tag 'В черновики', name: 'draft_button', class: "btn btn-large" %>				
+			<% end %>
+			<% if @article && @article.id  %>
+				<%= link_to "Удалить", @article, method: :delete,
+                                     data: { confirm: "Уверены?" },
+                                     title: "Удалить",
+                                     class: "btn btn-large btn-danger pull-right" %>
+			<% end %>
+			<%= submit_tag 'Предпросмотр', name: 'preview_button', class: "btn btn-large" %>
+		</div>
+		<section>
+			<h2>Дополнительные параметры</h2>
+			<hr>
+			<div class="span6 meta-options">
+				<h3>Поисковая оптимизация</h3>
+				<hr>
+				<%= label_tag 'permalink', 'Slug' %>
+				<%= text_field_tag 'permalink', params[:permalink], placeholder: 'example-title-name' %>
+				<%= label_tag 'keywords', 'Теги для поисковика' %>
+				<%= text_field_tag 'keywords', params[:keywords], placeholder: 'tag 1,tag2,tag3' %>
+				<%= label_tag 'meta-description', 'Описание для поисковика' %>
+				<%= text_area_tag 'meta-description', params["meta-description"] %>
+			</div>
+			<div class="span5 options pull-right">
+				<h3>Категории и теги</h3>
+				<hr>
+				<%= label_tag 'categories', 'Категории (через shift или ctrl)' %>
+				<%= select_tag 'categories', options_from_collection_for_select(Category.all, "name", "title"),
+				multiple: true %>
+				<% if @article && !@article.categories.empty? %>Текущие категории:
+					<% @article.categories.each do |x| %> 
+						<%= x.title %>
+					<% end %><p></p>
+				<% end %>
+				<%= label_tag 'tags', 'Теги' %>
+				<%= text_field_tag 'tags', params[:tags] %>
+			</div>
+		</section>
+	<% end %>
+</div>

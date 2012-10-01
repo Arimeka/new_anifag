@@ -1,0 +1,89 @@
+<section>
+  <% if controller.action_name == 'new' %> 
+    <h1>Новый топик</h1>
+  <% else %>
+    <h1>Редактирование топика</h1>
+  <% end %>
+  <hr>
+  <% if params[:preview_button] %>
+    <h2>Предпросмотр</h2>
+    <table class="table table-bordered">
+      <thead>  
+        <tr>  
+          <th width="20%">Автор</th>  
+          <th width="80%">Сообщение</th>        
+        </tr>
+      </thead>
+      <tbody> 
+        <tr>
+          <td class="post-author">
+            <p><strong><%= link_to @topic.user.name, user_url(@topic.user) %></strong></p>
+            <%= gravatar_for @topic.user, options = { size: 120 } %>
+            <% if user_role(@topic.user) %>
+              <p><strong><%= user_role(@topic.user) %></strong></p>
+            <% end %>
+          </td>  
+          <td>                    
+            <%= show_content(@topic.content).html_safe %>
+            <% if @topic.user.user_description.sign %>
+              <p class="post-footer">
+                <small><%= @topic.user.user_description.sign %></small>
+              </p>
+            <% end %>
+          </td> 
+        </tr>
+      </tbody>  
+    </table>
+    <hr>
+  <% end %>
+  <div class="row">
+    <div class="span12">
+      <%= form_for(@topic) do |f| %>
+        <% if @topic.errors.any? %>
+          <div id="error_explanation">
+            <div class="alert alert-error">
+              Форма содержит <%= (@topic.errors.count).to_s + 
+                                  " " + Russian::pluralize((@topic.errors.count), 
+                                  "ошибку", "ошибки", "ошибок") %>.
+            </div>
+            <ul>
+            <% @topic.errors.full_messages.each do |msg| %>
+              <li>* <%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+  
+        <%= f.label :title, "Название" %>
+        <%= f.text_field :title %>
+  
+        <%= f.label :content, "Сообщение" %>
+        <%= f.text_area :content, class: "redactor_topic" %>
+        
+        <hr>
+        <%= f.label :close, class: "checkbox" do %>
+          <%= f.check_box :close  %> Запретить комментирование
+        <% end %>
+        
+        <%= hidden_field_tag "forum", params[:forum] %>
+        
+        <div class="form-actions control">         
+        
+          <% if controller.action_name == 'new' %>
+            <%= f.submit "Создать", class: "btn btn-large btn-primary" %>
+          <% else %>
+            <% if @topic && @topic.id  %>
+              <%= link_to "Удалить", @topic, method: :delete,
+                                           data: { confirm: "Уверены?" },
+                                           title: "Удалить",
+                                           class: "btn btn-large btn-danger pull-right" %>
+            <% end %>
+            <%= f.submit "Обновить", class: "btn btn-large btn-primary" %>
+            <%= f.submit "Отмена", name: 'cancel_button', class: "btn btn-large" %>
+          <% end %>
+          <%= f.submit 'Предпросмотр', name: 'preview_button', class: "btn btn-large" %>
+        </div>
+      <% end %>
+    </div>
+  </div> 
+</section> 

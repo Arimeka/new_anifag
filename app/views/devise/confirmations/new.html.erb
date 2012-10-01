@@ -1,0 +1,19 @@
+<% provide(:title, 'Подтверждение') %>
+<h1>Повторно отправить инструкции для подтверждения</h1>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+      <%= devise_error_messages! %>
+    
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+      
+    <div class="form-actions">
+      <%= f.submit "Отправить", class: "btn btn-large btn-primary" %><br />
+      
+      <%= render "devise/shared/links" %>
+    </div>
+    <% end %>    
+  </div>
+</div>

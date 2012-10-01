@@ -1,0 +1,23 @@
+// Place all the styles related to the Tags controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+a.tag {
+  font-size: 0.9em;
+  text-transform: none;
+  text-decoration: none;
+}
+
+/* Tag Cloud */
+#tag_cloud {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;         
+}
+.cloud_element {
+  display: inline;              
+}
+a.cloud_element {
+  line-height: 100%;
+  vertical-align: middle;
+} 
