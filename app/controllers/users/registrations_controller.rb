@@ -12,6 +12,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def update
     user = User.find(current_user.id)
 
+    if params[:user][:password].blank?
+      params[:user][:password] = params[:user][:current_password]
+      params[:user][:password_confirmation] = params[:user][:current_password]
+    end
+
     if user.update_with_password(params[:user])
       user.user_description.update_attributes(links: params[:links], sign: params[:sign])
       sign_in user, :bypass => true
