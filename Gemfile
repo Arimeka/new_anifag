@@ -36,8 +36,11 @@ group :test do
   gem 'factory_girl_rails', '1.4.0'
 end
 
-gem 'annotate', '2.5.0', group: :development
-
+group :development do
+  gem "capistrano"
+  gem "rvm-capistrano"
+  gem 'annotate', '2.5.0'
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
