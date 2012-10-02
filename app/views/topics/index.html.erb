@@ -28,7 +28,7 @@
             Нет сообщений
           <% end %>
         </td>
-        <% if ((current_user?(topic.user) && !current_user.banned) || current_user.admin?) %>  
+        <% if (current_user?(topic.user) && !current_user.banned) || current_user.admin? %>
           <td><%= link_to "Edit", edit_topic_path(topic) %></td>  
           <td><%= link_to "Delete", topic, :confirm => 'Уверены?', :method => :delete %></td>
         <% end %>  

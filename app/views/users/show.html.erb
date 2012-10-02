@@ -16,7 +16,7 @@
 						<div class ="user_pic">
 							<%= link_to "Настройки", edit_user_registration_path(@user), class: "btn btn-primary" %>
 							<% if current_user.admin? && !current_user?(@user) && !@user.admin? %>
-								<% if @user.banned == false %>
+								<% unless @user.banned %>
 									<%= link_to "Забанить", user_ban_path, class: "btn btn-danger",
 		                                  									 data: { confirm: "Уверены?" } %>
 		          	<% else %>

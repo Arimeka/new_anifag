@@ -7,5 +7,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   
   def create
     redirect_to root_path
-  end  
+  end 
+
+  def update
+    user = User.find(current_user.id)
+
+    if user.update_with_password(params[:user])
+      user.user_description.update_attributes(links: params[:links], sign: params[:sign])
+      sign_in user, :bypass => true
+      redirect_to user
+    else
+      clean_up_passwords user
+      respond_with user
+    end
+  end 
 end 

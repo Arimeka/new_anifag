@@ -7,7 +7,7 @@
 	  		<h3 class="title"><%= @article.title %></h3>
 	  		<hr>
 	  		<div class="body"><%= show_content(@article.content).html_safe %></div>
-	  		<% if !@article.source.blank? %>
+	  		<% unless @article.source.blank? %>
 	  			<hr>
 	  			<small class="source"><%= link_to "Источник", @article.source, target:"_blank" %></small>
 	  		<% end %>

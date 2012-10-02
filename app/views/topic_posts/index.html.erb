@@ -20,7 +20,7 @@
           <%= link_to post.topic.title, post.topic %>
           <br> Автор: <%= link_to post.user.name, post.user %>
         </td>
-        <% if ((current_user?(post.user) && !current_user.banned) || current_user.admin?) %>  
+        <% if (current_user?(post.user) && !current_user.banned) || current_user.admin? %>
           <td><%= link_to "Edit", edit_topic_post_path(post) %></td>  
           <td><%= link_to "Delete", post, :confirm => 'Уверены?', :method => :delete %></td>
         <% end %>  

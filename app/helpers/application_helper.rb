@@ -70,7 +70,7 @@ module ApplicationHelper
                             :transformers => [check_css, video_emb])    
   end
   
-  def good_css? text
+  def good_css?(text)
     return false if text =~ /(\w\/\/)/    # a// comment immediately following a letter
     return false if text =~ /(\w\/\/*\*)/ # a/* comment immediately following a letter
     return false if text =~ /(\/\*\/)/            # /*/ --> hack attempt, IMO
@@ -102,7 +102,7 @@ module ApplicationHelper
     minFontSize = 10
     maxFontSize = 40 
     
-    if !@tags.empty?
+    unless @tags.empty?
       minOccurs = @tags.reverse.first.tags_count
       maxOccurs = @tags.first.tags_count
       min = (maxOccurs-minOccurs)/@tags.count

@@ -16,7 +16,7 @@
 		  <%= show_content(@article.content).html_safe %>
 		</div>
 		<hr>
-		<% if !@article.source.blank? %>
+		<% unless @article.source.blank? %>
 			<small class="source"><%= link_to "Источник", @article.source, target:"_blank" %></small>
 		<% end %>	
 	<% else %>
@@ -27,7 +27,7 @@
 	<% end %>
 	<div class="post-footer">
 		<% if controller.controller_name == 'articles' %>
-			<% if !@article.draft %>
+			<% unless @article.draft %>
 				<div class="pull-right">
 					<div class="dropdown">
 		  			<div class="dropdown-toggle btn btn-small" data-toggle="dropdown">
@@ -53,12 +53,12 @@
 		<% end %>		
 		<p>
 			Опубликовано: <%= Russian::strftime(article.created_at.getlocal) %> 
-			<% if !article.categories.empty? %>в
+			<% unless article.categories.empty? %>в
 				<% article.categories.each do |x| %> 
 				<%= link_to x.title, x, class: "category label label-info" %>
 				<% end %> 
 			<% end %>
-			<% if !article.tags.empty? %></p><p>Теги: 
+			<% unless article.tags.empty? %></p><p>Теги:
 				<% article.tags.each do |x| %> 
 					<%= link_to x, tag_path(x), class: "tag label label-inverse" %>
 				<% end %>

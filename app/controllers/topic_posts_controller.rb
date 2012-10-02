@@ -14,7 +14,7 @@ class TopicPostsController < ApplicationController
   
   def create
     @topic = Topic.find(params[:topic])
-    if !@topic.close
+    unless @topic.close
       @topic_post = current_user.topic_posts.build(content: params[:topic_post]["content"], topic_id: params[:topic].to_i)    
       @topic_posts = @topic.topic_posts.last(20)
       if params[:preview_button] || !@topic_post.save

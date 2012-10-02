@@ -48,8 +48,16 @@ namespace :db do
           end
         end
         
-        meta_description = Sanitize.clean(description).length > 50 ? Sanitize.clean(description)[0..160] + ( Sanitize.clean(description).length > 160 ? '...' : '' ) : ''
-        
+        if Sanitize.clean(description).length > 160
+          meta_description = Sanitize.clean(description)[0..160] + '...'
+        else
+          if Sanitize.clean(description).length > 50
+            meta_description = Sanitize.clean(description)[0..160]
+          else
+            meta_description = ''
+          end
+        end
+
         @article = @user.articles.build(content: content, description: description,
                                         title: title, permalink: permalink, draft: permalink.blank? ? true : false,
                                         created_at: created_at, updated_at: updated_at, tags: tags,

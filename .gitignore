@@ -23,3 +23,5 @@ doc/
 bundler_stubs/
 .settings/
 .idea/
+anifag.sublime-project
+anifag.sublime-workspace

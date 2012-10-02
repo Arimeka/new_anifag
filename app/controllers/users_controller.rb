@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.paginate(page: params[:page], per_page: 15)
-  end
+  end  
     
   def ban
     @user = User.find(params[:id])
     if current_user.admin? && !current_user?(@user) && !@user.admin?      
       @user.toggle!(:banned)
-      if @user.banned == true
+      if @user.banned
         flash[:success] = "Пользователь забанен."
       else
         flash[:success] = "Пользователь разабанен."

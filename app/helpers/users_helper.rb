@@ -14,12 +14,12 @@ module UsersHelper
       "Админ"
     else
       case user.user_description.role
-      when "user"
-        "Пользователь"
       when "newsmaker"
         "Новости"
       when "editor"
         "Редактор"
+      else
+        "Пользователь"
       end
     end
   end

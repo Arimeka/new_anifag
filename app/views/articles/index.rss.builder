@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description "Новости аниме и манги"
     xml.link root_url
 
-    for article in @articles
+    @articles.each do |article|
       xml.item do
         article.tags.each do |x|
           xml.category x

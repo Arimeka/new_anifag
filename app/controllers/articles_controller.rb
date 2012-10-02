@@ -79,7 +79,13 @@ class ArticlesController < ApplicationController
     end
     
     if params["meta-description"].blank?
-      params["meta-description"] = Sanitize.clean(@mass[0]).length > 50 ? Sanitize.clean(@mass[0])[0..160] + ( Sanitize.clean(@mass[0]).length > 160 ? '...' : '' ) : ''
+      if Sanitize.clean(@mass[0]).length > 160
+        params["meta-description"] = Sanitize.clean(@mass[0])[0..160] + '...'
+      elsif Sanitize.clean(@mass[0]).length > 50
+        params["meta-description"] = Sanitize.clean(@mass[0])[0..160]
+      else
+        params["meta-description"] = ''
+      end
     end
           
     @article = current_user.articles.build(content: @mass[0]+@mass[1], description: @mass[0], 
@@ -93,13 +99,14 @@ class ArticlesController < ApplicationController
       @article.draft = true 
       if @article.save
         if params[:categories]
-          if !params[:categories].include?('')
+          unless params[:categories].include?('')
             params[:categories].each do |x|
               name = Russian.translit(x).downcase.split.map { |n| n[/\w+/] }.join('-')
               if Category.find_by_name(name)
                 @article.categories << Category.find_by_name(name)
               else
                 @article.categories.create(name: name, title: x)
+
               end
             end
           end 
@@ -113,7 +120,7 @@ class ArticlesController < ApplicationController
     else
       if @article.save
         if params[:categories]
-          if !params[:categories].include?('')
+          unless params[:categories].include?('')
             params[:categories].each do |x|
               name = Russian.translit(x).downcase.split.map { |n| n[/\w+/] }.join('-')
               if Category.find_by_name(name)
@@ -158,7 +165,7 @@ class ArticlesController < ApplicationController
     
     if params[:categories]
       @article.categories.delete_all
-      if !params[:categories].include?('')
+      unless params[:categories].include?('')
         params[:categories].each do |x|
           name = Russian.translit(x).downcase.split.map { |n| n[/\w+/] }.join('-')
           if Category.find_by_name(name)
