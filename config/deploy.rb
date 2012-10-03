@@ -32,6 +32,9 @@ after 'deploy:update_code', :roles => :app do
   # При каждом деплое создаются ссылки на них в нужные места приложения.
   run "rm -f #{current_release}/config/database.yml"
   run "ln -s #{deploy_to}/shared/config/database.yml #{current_release}/config/database.yml"
+
+  run "rm -f #{current_release}/config/initializers/setup_mailer.rb"
+  run "ln -s #{deploy_to}/shared/config/initializers/setup_mailer.rb #{current_release}/config/initializers/setup_mailer.rb"
 end
 
 namespace :deploy do
