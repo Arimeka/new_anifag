@@ -70,11 +70,15 @@ class ArticlesController < ApplicationController
     
     if params[:keywords].blank?
       params[:keywords] = params[:tags]
-    end
-    
+    end 
+
     if params[:permalink].blank?
-      params[:permalink] = Russian.translit(params[:title]).downcase.split.map do |x|
-        x[/\w+/]
+      slug = Russian.translit(params[:title]).downcase.split.map do |x|
+        x[/\S+/]
+      end.join('-')
+    else
+      slug = Russian.translit(params[:permalink].downcase.split.map do |x|
+        x[/\S+/]
       end.join('-')
     end
     
@@ -91,7 +95,7 @@ class ArticlesController < ApplicationController
     @article = current_user.articles.build(content: @mass[0]+@mass[1], description: @mass[0], 
                                            title: params[:title], source: params[:source], 
                                            keywords: params[:keywords], meta_description: params["meta-description"],
-                                           permalink: params[:permalink], draft: false, tags: params[:tags].split(/,\s*/))    
+                                           permalink: slug, draft: false, tags: params[:tags].split(/,\s*/))    
                                                                                      
     if params[:preview_button] || !@article.save
       render 'new'
@@ -149,18 +153,22 @@ class ArticlesController < ApplicationController
     end
     
     if params[:permalink].blank?
-      params[:permalink] = Russian.translit(params[:title]).downcase.split.map do |x|
-        x[/\w+/]
+      slug = Russian.translit(params[:title]).downcase.split.map do |x|
+        x[/\S+/]
+      end.join('-')
+    else
+      slug = Russian.translit(params[:permalink].downcase.split.map do |x|
+        x[/\S+/]
       end.join('-')
     end
-    
+
     @article.content = @mass[0]+@mass[1]
     @article.description = @mass[0]
     @article.title = params[:title]
     @article.source = params[:source]
     @article.keywords = params[:keywords]
     @article.meta_description = params["meta-description"]
-    @article.permalink = params[:permalink]
+    @article.permalink = slug
     @article.tags = params[:tags].split(/,\s*/)
     
     if params[:categories]
