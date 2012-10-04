@@ -5,9 +5,9 @@ class ArticlesController < ApplicationController
     
   def show
     if user_signed_in?
-      @article = Article.find(params[:id]) || Article.find_by_permalink(id)
+      @article = Article.find(params[:id])
     else
-      @article = Article.not_draft.find_by_id(params[:id]) || Article.not_draft.find_by_permalink(id)
+      @article = Article.not_draft.find(params[:id])
     end  
   end
   
@@ -17,7 +17,11 @@ class ArticlesController < ApplicationController
     else
       @article = Article.not_draft.find_by_permalink(params[:id])
     end
-    redirect_to @article     
+    if @article 
+      redirect_to @article
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end  
   end
   
   def index
@@ -41,7 +45,8 @@ class ArticlesController < ApplicationController
   def edit    
     @article = Article.find(params[:id])
     if @article.description != @article.content
-      params[:content] = @article.description + "<hr id=\"more\">" + @article.content.split(@article.description)[1]
+      params[:content] = @article.description + "<hr id=\"more\">" + 
+                                @article.content.split(@article.description)[1]
     else
       params[:content] = @article.content
     end
@@ -77,7 +82,7 @@ class ArticlesController < ApplicationController
         x[/\S+/]
       end.join('-')
     else
-      slug = Russian.translit(params[:permalink].downcase.split.map do |x|
+      slug = Russian.translit(params[:permalink]).downcase.split.map do |x|
         x[/\S+/]
       end.join('-')
     end
@@ -92,10 +97,14 @@ class ArticlesController < ApplicationController
       end
     end
           
-    @article = current_user.articles.build(content: @mass[0]+@mass[1], description: @mass[0], 
-                                           title: params[:title], source: params[:source], 
-                                           keywords: params[:keywords], meta_description: params["meta-description"],
-                                           permalink: slug, draft: false, tags: params[:tags].split(/,\s*/))    
+    @article = current_user.articles.build(content: @mass[0]+@mass[1], 
+                                           description: @mass[0], 
+                                           title: params[:title], 
+                                           source: params[:source], 
+                                           keywords: params[:keywords], 
+                                           meta_description: params["meta-description"],
+                                           permalink: slug, 
+                                           draft: false, tags: params[:tags].split(/,\s*/))    
                                                                                      
     if params[:preview_button] || !@article.save
       render 'new'
@@ -157,7 +166,7 @@ class ArticlesController < ApplicationController
         x[/\S+/]
       end.join('-')
     else
-      slug = Russian.translit(params[:permalink].downcase.split.map do |x|
+      slug = Russian.translit(params[:permalink]).downcase.split.map do |x|
         x[/\S+/]
       end.join('-')
     end
@@ -230,6 +239,7 @@ class ArticlesController < ApplicationController
         @article = current_user.articles.build()
       end
       user = @article.user
-      redirect_to(root_path) unless ((current_user?(user) && !current_user.banned) || current_user.admin? || user_editor?(current_user))
+      redirect_to(root_path) unless ((current_user?(user) && !current_user.banned) || 
+                                      current_user.admin? || user_editor?(current_user))
     end
 end
