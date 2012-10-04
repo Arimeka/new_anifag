@@ -26,3 +26,4 @@ bundler_stubs/
 anifag.sublime-project
 anifag.sublime-workspace
 public/system/
+config/deploy.rb
