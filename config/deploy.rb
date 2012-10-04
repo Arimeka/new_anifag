@@ -6,6 +6,7 @@ set :application, "anifag"
 set :rails_env, "production"
 set :domain, "user@host"
 set :deploy_to, "/var/www/#{application}"
+ssh_options[:keys] = ["/where/ever/it/is/key.pem"]
 set :use_sudo, false
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
