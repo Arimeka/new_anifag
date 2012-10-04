@@ -1,6 +1,6 @@
 # coding: utf-8
 class ArticlesController < ApplicationController
-  before_filter :authenticate_user!, except: [:show ,:index]
+  before_filter :authenticate_user!, except: [:show ,:index, :redirect_to_new]
   before_filter :correct_user,   except: [:show ,:index, :redirect_to_new]
     
   def show
