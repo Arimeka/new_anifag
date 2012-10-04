@@ -2,7 +2,7 @@
 #
 # To ban all spiders from the entire site uncomment the next two lines:
 User-Agent: *
-Disallow: /
+# Disallow: /
 Disallow: /signin
 Disallow: /signout
 Disallow: /redactor_rails
