@@ -25,3 +25,4 @@ bundler_stubs/
 .idea/
 anifag.sublime-project
 anifag.sublime-workspace
+public/system/
