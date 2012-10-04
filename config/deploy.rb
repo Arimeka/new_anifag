@@ -4,7 +4,7 @@ require 'bundler/capistrano' # Для работы bundler.
 
 set :application, "anifag"
 set :rails_env, "production"
-set :domain, "user@domain.com"
+set :domain, "user@host"
 set :deploy_to, "/var/www/#{application}"
 set :use_sudo, false
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
