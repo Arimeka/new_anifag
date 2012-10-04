@@ -19,7 +19,7 @@
 
 class Article < ActiveRecord::Base
   attr_accessible :content, :description, :permalink, :title, :source, 
-                  :keywords, :meta_description, :draft, :tags, :created_at, :updated_at
+                  :keywords, :meta_description, :draft, :tags
   attr_taggable :tags
   
   include PgSearch
