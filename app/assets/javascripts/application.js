@@ -16,4 +16,5 @@
 //= require bootstrap-alert
 //= require bootstrap-tab
 //= require redactor-rails
+//= require bootstrap-carousel
 //= require_tree .
