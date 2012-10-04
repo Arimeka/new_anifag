@@ -9,18 +9,20 @@
 	
 	<%= will_paginate @pg_search_articles, params: { search: params[:search] } %>
 	<% @pg_search_articles.each do |pg_search_article| %>
-		<% if pg_search_article.searchable.description %>
-			<article class="article">
-				<h3 class="title"><%= link_to pg_search_article.searchable.title, pg_search_article.searchable %></h3>
-				<div class="body"><%= pg_search_article.searchable.description.html_safe %></div>
-				<% if pg_search_article.searchable.description != pg_search_article.searchable.content %>
-					<%= link_to "Читать дальше", pg_search_article.searchable %>
-				<% end %>
+		<% unless pg_search_article.searchable.draft %>
+			<% if pg_search_article.searchable.description %>
+				<article class="article">
+					<h3 class="title"><%= link_to pg_search_article.searchable.title, pg_search_article.searchable %></h3>
+					<div class="body"><%= pg_search_article.searchable.description.html_safe %></div>
+					<% if pg_search_article.searchable.description != pg_search_article.searchable.content %>
+						<%= link_to "Читать дальше", pg_search_article.searchable %>
+					<% end %>
+					<hr>
+				</article>
+			<% else %>		
+				<h3><%= link_to pg_search_article.searchable.title, pg_search_article.searchable %></h3>
 				<hr>
-			</article>
-		<% else %>		
-			<h3><%= link_to pg_search_article.searchable.title, pg_search_article.searchable %></h3>
-			<hr>
+			<% end %>
 		<% end %>	
 	<% end %>
 	<%= will_paginate @pg_search_articles, params: { search: params[:search] } %>	
