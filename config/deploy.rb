@@ -13,7 +13,7 @@ set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
 set :rvm_ruby_string, 'ruby' # Это указание на то, какой Ruby интерпретатор мы будем использовать.
 
-set :repository,  "git@github.com:Arimeka/new_anifag.git" 
+set :repository,  "git://github.com/Arimeka/new_anifag.git" 
 
 set :scm, :git # Используем git.
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`
