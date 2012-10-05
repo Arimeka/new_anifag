@@ -4,6 +4,7 @@
       <%= link_to "⑨ Anime Fag", root_path, :class => "brand" %>
       <ul class="nav">      	
   			<li><%= link_to "Главная", root_path %></li>
+        <li><%= link_to "Vocaloid Top100", 'http://vocaloid.anifag.com/', target: '_blank' %></li>
   			<% if user_signed_in? %>
   			 <li><%= link_to "Форумы", forums_path %></li>
   			<% end %>               
