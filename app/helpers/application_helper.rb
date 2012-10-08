@@ -139,11 +139,10 @@ module ApplicationHelper
     advertisement = []
     advertisement = [
       '
-        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_105178" src="http://www.play-asia.com/paOS-38-19-0,000000,none,0,0,0,0,FFFFFF,000000,left,1,0-81-1-49-en-76-6-70-g9qa-6-2-78-2i-29-344_1576-90-mhar-33-iframe_banner-40-1-44-200px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="200px" height="930"></iframe>
-        <script type="text/javascript">
-        var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_105178" ); iframe.src = iframe.src.replace( "iframe_banner", t );
-        </script>
-        
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_669235" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-ihbd-6-2-78-2i-29-344-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_669235" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
         </div>
       ',
       '
@@ -156,10 +155,104 @@ module ApplicationHelper
         <div class="separator" style="clear: both; text-align: center;"><a href="http://printdirect.ru/index.php?mode=storefront&submit_search=1&search_keyword=%e0%ed%e8%ec%e5&partner_id=209270" target="_blank"><img border="0" src="http://1.bp.blogspot.com/--aLtSZHNypk/TvgFZGWj9YI/AAAAAAAANOU/CewHY60MJbE/s1600/pd.jpg" title="anime@printdirect.ru" /></a></div>
       ',
       '
-        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_569077" src="http://www.play-asia.com/paOS-38-19-0,000000,none,0,0,0,0,FFFFFF,000000,left,1,0-81-1-49-en-76-6-36-nendoroid-70-2k6q-6-2-78-2i-29-344_1576-90-mhar-33-iframe_banner-40-1-44-200px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="200px" height="930"></iframe>
-        <script type="text/javascript">
-        var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_569077" ); iframe.src = iframe.src.replace( "iframe_banner", t );
-        </script></div>
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_146799" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-knv6-6-2-78-2i-29-1767-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_146799" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_601899" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-ci0b-6-2-78-2i-29-1771-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_601899" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_360537" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-h3av-6-2-78-2i-29-1783-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_360537" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_338637" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-7dn6-6-2-78-2i-29-1743-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_338637" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_872326" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-b8j4-6-2-78-2i-29-1753-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_872326" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_553159" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-70bi-6-2-78-2i-29-1779-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_553159" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_431680" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-mpn-6-2-78-2i-29-1775-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_431680" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_629546" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-7ftr-6-2-78-2i-29-1749-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_629546" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_817471" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-u4d-6-2-78-2i-29-1769-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_817471" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_305571" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-7d7z-6-2-78-2i-29-1781-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_305571" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><iframe id="id01_670666" src="http://www.play-asia.com/paOS-38-19-0%2C000000%2Cnone%2C0%2C0%2C0%2C0%2CFFFFFF%2C000000%2Cleft%2C1%2C0-81-1-76-6-70-j2mq-6-2-78-2i-29-1745-90-mhar-33-iframe_banner-44-140px.html" style="border-style: none; border-width: 0px; border-color: #000000; padding: 0px; margin: 0px; scrolling: no; frameborder: 0;" scrolling="no" frameborder="0" width="140px" height="925"></iframe>
+          <script type="text/javascript">
+          var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_670666" ); iframe.src = iframe.src.replace( "iframe_banner", t );
+          </script>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-11.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/140x600.jpg" width="140" height="600" alt=""></a>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-12.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/160x300.jpg" width="160" height="300" alt=""></a>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-19.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/200x230.jpg" width="200" height="230" alt=""></a>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-45.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/120-300.jpg" width="120" height="300" alt=""></a></div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-46.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/120-300_2.jpg" width="120" height="300" alt=""></a>
+        </div>
+      ',
+      '
+        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-48.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/140-600.jpg" width="140" height="600" alt=""></a>
+        </div>
       '
     ]
     advertisement.sample
