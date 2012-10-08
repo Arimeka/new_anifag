@@ -1,10 +1,10 @@
-namespace :db do
-  desc "Fill database with old data"
-  f = File.open("public/blog-backup.xml", "r")
-  doc = Nokogiri::XML(f)
-  f.close
+namespace :db do  
 
   task old_data: :environment do
+    desc "Fill database with old data"
+    f = File.open("public/blog-backup.xml", "r")
+    doc = Nokogiri::XML(f)
+    f.close
     @user = User.create!(name: "User",
                  email: "user@example.com",
                  password: "foobar",
