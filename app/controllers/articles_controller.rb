@@ -89,11 +89,17 @@ class ArticlesController < ApplicationController
     
     if params["meta-description"].blank?
       if Sanitize.clean(@mass[0]).length > 160
-        params["meta-description"] = Sanitize.clean(@mass[0])[0..160] + '...'
+        meta_description = Sanitize.clean(@mass[0])[0..160] + '...'
       elsif Sanitize.clean(@mass[0]).length > 50
-        params["meta-description"] = Sanitize.clean(@mass[0])[0..160]
+        meta_description = Sanitize.clean(@mass[0])[0..160]
       else
-        params["meta-description"] = ''
+        meta_description = ''
+      end
+    else
+      if params["meta-description"].length > 160
+        meta_description = params["meta-description"][0..160] + '...'
+      else
+        meta_description = params["meta-description"]
       end
     end
           
@@ -102,7 +108,7 @@ class ArticlesController < ApplicationController
                                            title: params[:title], 
                                            source: params[:source], 
                                            keywords: params[:keywords], 
-                                           meta_description: params["meta-description"],
+                                           meta_description: meta_description,
                                            permalink: slug, 
                                            draft: false, tags: params[:tags].split(/,\s*/))    
                                                                                      
@@ -171,12 +177,28 @@ class ArticlesController < ApplicationController
       end.join('-')
     end
 
+    if params["meta-description"].blank?
+      if Sanitize.clean(@mass[0]).length > 160
+        meta_description = Sanitize.clean(@mass[0])[0..160] + '...'
+      elsif Sanitize.clean(@mass[0]).length > 50
+        meta_description = Sanitize.clean(@mass[0])[0..160]
+      else
+        meta_description = ''
+      end
+    else
+      if params["meta-description"].length > 160
+        meta_description = params["meta-description"][0..160] + '...'
+      else
+        meta_description = params["meta-description"]
+      end
+    end
+
     @article.content = @mass[0]+@mass[1]
     @article.description = @mass[0]
     @article.title = params[:title]
     @article.source = params[:source]
     @article.keywords = params[:keywords]
-    @article.meta_description = params["meta-description"]
+    @article.meta_description = meta_description
     @article.permalink = slug
     @article.tags = params[:tags].split(/,\s*/)
     
