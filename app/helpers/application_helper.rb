@@ -86,7 +86,7 @@ module ApplicationHelper
       /[\x7f-\xff]/, # high bytes -- suspect
       /[\x00-\x08\x0B\x0C\x0E-\x1F]/, #low bytes -- suspect
       /&\#/, # bad charset
-      /(position|padding|\s*\d{3,}\w{0,2};)/i
+      /(position|padding|(\s+|:)\d{4,}\w{0,2};)/i
     ]
     good = [
       /()/i
