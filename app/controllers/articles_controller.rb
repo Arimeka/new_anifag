@@ -78,11 +78,11 @@ class ArticlesController < ApplicationController
     end 
 
     if params[:permalink].blank?
-      slug = Russian.translit(params[:title]).downcase.split.map do |x|
+      slug = Russian.translit(params[:title]).downcase.split(/\W+\s*/).map do |x|
         x[/\S+/]
       end.join('-')
     else
-      slug = Russian.translit(params[:permalink]).downcase.split.map do |x|
+      slug = Russian.translit(params[:permalink]).downcase.split(/\W+\s*/).map do |x|
         x[/\S+/]
       end.join('-')
     end
@@ -110,7 +110,7 @@ class ArticlesController < ApplicationController
                                            keywords: params[:keywords], 
                                            meta_description: meta_description,
                                            permalink: slug, 
-                                           draft: false, tags: params[:tags].split(/,\s*/))    
+                                           draft: false, tags: params[:tags].split(/\W+\s*/))    
                                                                                      
     if params[:preview_button] || !@article.save
       render 'new'
@@ -168,11 +168,11 @@ class ArticlesController < ApplicationController
     end
     
     if params[:permalink].blank?
-      slug = Russian.translit(params[:title]).downcase.split.map do |x|
+      slug = Russian.translit(params[:title]).downcase.split(/\W+\s*/).map do |x|
         x[/\S+/]
       end.join('-')
     else
-      slug = Russian.translit(params[:permalink]).downcase.split.map do |x|
+      slug = Russian.translit(params[:permalink]).downcase.split(/\W+\s*/).map do |x|
         x[/\S+/]
       end.join('-')
     end
