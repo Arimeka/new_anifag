@@ -1,7 +1,7 @@
 # coding: utf-8
 class Users::InvitationsController < Devise::InvitationsController 
     
-  def edit
+  def update
     super
     if @user
       @user.create_user_description(role: "user")

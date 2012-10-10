@@ -3,14 +3,14 @@ ru:
     invitations:
       send_instructions: 'Пригласительное письмо было отправлено на %{email}.'
       invitation_token_invalid: 'Инвайт недействителен!'
-      updated: 'Пароль принят. Теперь вы вошли на сайт.'
+      updated: 'Данные приняты. Теперь вы вошли на сайт.'
       no_invitations_remaining: "Больше нет приглашений"
       new:
         header: "Послать приглашение"
         submit_button: "Послать приглашение"
       edit:
-        header: "Введите ваш пароль"
-        submit_button: "Принять мой пароль"
+        header: "Введите свои данные"
+        submit_button: "Принять"
     mailer:
       invitation_instructions:
         subject: 'Пригласительные инструкции'

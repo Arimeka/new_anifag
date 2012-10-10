@@ -6,6 +6,9 @@
     <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
       <%= devise_error_messages! %>
       <%= f.hidden_field :invitation_token %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name %>
     
       <%= f.label :password %>
       <%= f.password_field :password %>
