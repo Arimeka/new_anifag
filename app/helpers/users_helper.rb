@@ -29,7 +29,8 @@ module UsersHelper
     var = links.split("\r\n")
     var.each do |x|
       if x =~ /(.+) - (htt(p|ps):\/\/.+\.\w+.*\/$)/ 
-        @mass.push( { name: x[/(.+) - (htt(p|ps):\/\/.+\.\w+.*\/$)/, 1], link: x[/(.+) - (htt(p|ps):\/\/.+\.\w+.*\/$)/, 2] } )
+        @mass.push( { name: x[/(.+) - ((ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$)/, 1], 
+                      link: x[/(.+) - ((ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$)/, 2] } )
       end     
     end
     @mass
