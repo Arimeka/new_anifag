@@ -149,9 +149,6 @@ module ApplicationHelper
         <div class="separator" style="clear: both; text-align: center;"><iframe src="http://rcm.amazon.com/e/cm?t=anifag-20&o=1&p=14&l=st1&mode=toys&search=figma nendoroid figures anime&fc1=000000&lt1=_blank&lc1=3366FF&bg1=FFFFFF&f=ifr" marginwidth="0" marginheight="0" width="160" height="600" border="0" frameborder="0" style="border:none;" scrolling="no"></iframe></div>
       ',
       '
-        <a href="http://www.1999.co.jp/eng/238-0-1-49.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/200-300.jpg" width="200" height="300" /></a>
-      ',
-      '
         <div class="separator" style="clear: both; text-align: center;"><a href="http://printdirect.ru/index.php?mode=storefront&submit_search=1&search_keyword=%e0%ed%e8%ec%e5&partner_id=209270" target="_blank"><img border="0" src="http://1.bp.blogspot.com/--aLtSZHNypk/TvgFZGWj9YI/AAAAAAAANOU/CewHY60MJbE/s1600/pd.jpg" title="anime@printdirect.ru" /></a></div>
       ',
       '
@@ -229,29 +226,6 @@ module ApplicationHelper
           <script type="text/javascript">
           var t = ""; t += window.location; t = t.replace( /#.*$/g, "" ).replace( /^.*:\/*/i, "" ).replace( /\./g, "[dot]" ).replace( /\//g, "[obs]" ).replace( /-/g, "[dash]" ); t = encodeURIComponent( encodeURIComponent( t ) ); var iframe = document.getElementById( "id01_670666" ); iframe.src = iframe.src.replace( "iframe_banner", t );
           </script>
-        </div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-11.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/140x600.jpg" width="140" height="600" alt=""></a>
-        </div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-12.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/160x300.jpg" width="160" height="300" alt=""></a>
-        </div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-19.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/200x230.jpg" width="200" height="230" alt=""></a>
-        </div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-45.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/120-300.jpg" width="120" height="300" alt=""></a></div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-46.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/120-300_2.jpg" width="120" height="300" alt=""></a>
-        </div>
-      ',
-      '
-        <div class="separator" style="clear: both; text-align: center;"><a href="http://www.1999.co.jp/eng/238-0-1-48.html" target="_blank"><img border="0" src="http://www.1999.co.jp/idevaffiliate/banners/140-600.jpg" width="140" height="600" alt=""></a>
         </div>
       '
     ]
