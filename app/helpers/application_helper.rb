@@ -96,29 +96,31 @@ module ApplicationHelper
   end
   
   def tag_cloud(limit)
-    @tags = Article.not_draft.popular_tags
-        
-    @tag_cloud_hash = {}
-    minFontSize = 10
-    maxFontSize = 40 
-    
-    unless @tags.empty?
-      minOccurs = @tags.reverse.first.tags_count
-      maxOccurs = @tags.first.tags_count
-      min = (maxOccurs-minOccurs)/@tags.count
-      @tags.each do |tag|
-        if maxOccurs == minOccurs
-          size = 13
-        else
-          weight = (tag.tags_count-minOccurs).to_f/(maxOccurs-minOccurs)
-          size = minFontSize + ((maxFontSize-minFontSize)*weight).round
+    unless ActiveRecord::Base.connection().execute("SELECT * FROM tags WHERE id=1;").to_a.empty?
+      @tags = Article.not_draft.popular_tags
+          
+      @tag_cloud_hash = {}
+      minFontSize = 10
+      maxFontSize = 40 
+      
+      unless @tags.empty?
+        minOccurs = @tags.reverse.first.tags_count
+        maxOccurs = @tags.first.tags_count
+        min = (maxOccurs-minOccurs)/@tags.count
+        @tags.each do |tag|
+          if maxOccurs == minOccurs
+            size = 13
+          else
+            weight = (tag.tags_count-minOccurs).to_f/(maxOccurs-minOccurs)
+            size = minFontSize + ((maxFontSize-minFontSize)*weight).round
+          end
+          @tag_cloud_hash[tag.id] = size
         end
-        @tag_cloud_hash[tag.id] = size
       end
+      if limit && @tags.count > 10
+        @tags = Article.not_draft.popular_tags(min: min)
+      end 
     end
-    if limit && @tags.count > 10
-      @tags = Article.not_draft.popular_tags(min: min)
-    end 
   end
   
   def archive_list(year)

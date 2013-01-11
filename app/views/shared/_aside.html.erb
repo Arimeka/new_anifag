@@ -15,7 +15,7 @@
     </a>
   </p>
   <hr>
-  <% if @tags.any? %>
+  <% if @tags && @tags.any? %>
     <h4>Облако тегов</h4>
     <p><%= render 'shared/tag_cloud'%></p>
     <p><%= link_to "Все теги", tags_path %></p>
