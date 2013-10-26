@@ -2,16 +2,23 @@ require 'rvm/capistrano' # Для работы rvm
 require 'bundler/capistrano' # Для работы bundler. 
 # При изменении гемов bundler автоматически обновит все гемы на сервере, чтобы они в точности соответствовали гемам разработчика. 
 
-set :application, "anifag"
-set :rails_env, "production"
-set :domain, "user@host"
+set :ssh_options, { keys: %w(~/.ssh/id_rsa) }
+
+set :rails_env,   "production"
+set :unicorn_env, rails_env
+set :app_env,     rails_env
+set :application, "anifag.com"
+set :domain, "anifag@bwah"
 set :deploy_to, "/var/www/#{application}"
-ssh_options[:keys] = ["/where/ever/it/is/key.pem"]
 set :use_sudo, false
+set :keep_releases, 3
+set :git_shallow_clone, 1
+
 set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
 set :unicorn_pid, "#{deploy_to}/shared/pids/unicorn.pid"
 
-set :rvm_ruby_string, 'ruby-1.9.3-p194' # Это указание на то, какой Ruby интерпретатор мы будем использовать.
+
+set :rvm_ruby_string, 'ruby-1.9.3-p448' # Это указание на то, какой Ruby интерпретатор мы будем использовать.
 
 set :repository,  "git://github.com/Arimeka/new_anifag.git" 
 
